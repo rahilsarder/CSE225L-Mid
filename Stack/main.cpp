@@ -6,9 +6,9 @@ using namespace std;
 
 int main(){
 
-    StackType<int> s1;
-    StackType<int> reverse;
-    StackType<int> store;
+    StackType<int> main;
+    StackType<int> temp1;
+    StackType<int> temp2;
 
     int n;
     cout<<"Enter the number of elements you want to push: ";
@@ -18,31 +18,31 @@ int main(){
         int x;
         cout<<"Enter the element "<<i+1<<" : ";
         cin>>x;
-        s1.Push(x);
+        main.Push(x);
     }
     int r;
     cout<<"Enter the number of elements you want to reverse: ";
     cin>>r;
 
     for(int i=0; i<r; i++){
-        reverse.Push(s1.Top());
-        s1.Pop();
-    }
-    while(!s1.IsEmpty()){
-        store.Push(s1.Top());
-        s1.Pop();
+        temp1.Push(main.Top());
+        main.Pop();
     }
 
-    while(!reverse.IsEmpty()){
-        cout<<reverse.Top()<<" ";
-        reverse.Pop();
+    while(!temp1.IsEmpty()){
+        temp2.Push(temp1.Top());
+        temp1.Pop();
     }
 
-   while(!store.IsEmpty()){
-       cout<<store.Top()<<" ";
-       store.Pop();
+    while(!temp2.IsEmpty()){
+        main.Push(temp2.Top());
+        temp2.Pop();
+    }
+
+   while(!main.IsEmpty()){
+       cout<<main.Top()<<" ";
+       main.Pop();
    }
-
 
     return 0;
 }
