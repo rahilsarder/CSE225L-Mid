@@ -1,15 +1,15 @@
 
 #ifndef SORTEDTYPE_H_INCLUDED
 #define SORTEDTYPE_H_INCLUDED
-#include "Student.cpp"
-const int MAX_ITEMS = 5;
+// #include "Student.cpp"
+const int MAX_ITEMS = 50;
 using namespace std;
 template <class ItemType>
 class SortedType
 {
 public:
     SortedType();
-    // SortedType(Student s);
+    SortedType(ItemType s);
     void MakeEmpty();
     bool IsFull();
     int LengthIs();
@@ -22,6 +22,6 @@ private:
     int length;
     ItemType info[MAX_ITEMS];
     int currentPos;
-    
+
 };
 #endif

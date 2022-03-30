@@ -11,14 +11,14 @@ SortedType<ItemType>::SortedType()
     currentPos = -1;
 }
 
-// template <class ItemType>
-// SortedType<ItemType>::SortedType(Student s)
-// {
-//     length = 0;
-//     currentPos = -1;
-//     info[length] = s;
-//     length++;
-// }
+template <class ItemType>
+SortedType<ItemType>::SortedType(ItemType s)
+{
+    length = 0;
+    currentPos = -1;
+    info[length] = s;
+    length++;
+}
 
 
 template <class ItemType>
@@ -76,24 +76,13 @@ void SortedType<ItemType>::RetrieveItem(ItemType& item, bool& found)
 template <class ItemType>
 void SortedType<ItemType>::InsertItem(ItemType item)
 {
-    if (length == 0)
-    {
-        info[0] = item;
-        length++;
-        return;
-    }
-
     int location = 0;
-    bool moreToSearch = (location < length);
-    while (moreToSearch)
+    for(int i=0; i<length; i++)
     {
-        if (item > info[location])
-        {
+        if(item>info[i])
             location++;
-            moreToSearch = (location < length);
-        }
-        else if (item < info[location])
-            moreToSearch = false;
+        else
+            break;
     }
 
     for (int i = length; i > location; i--)
@@ -106,14 +95,15 @@ void SortedType<ItemType>::InsertItem(ItemType item)
 
 template <class ItemType>
 void SortedType<ItemType>::DeleteItem(ItemType
-    item)
+                                      item)
 {
     int location = 0;
     while (item != info[location])
         location++;
     for (int index = location + 1; index < length;
-        index++)
+            index++)
         info[index - 1] = info[index];
     length--;
 
 }
+

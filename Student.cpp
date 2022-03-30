@@ -1,74 +1,48 @@
-#include <iostream>
+#include<iostream>
 
-using namespace std;
 
-class Student{
-    private:
-        int student_id;
-        string student_name;
-        float quiz, midterm1, midterm2, assignment, final;
+class Student
+{
+    friend bool operator>(Student a, Student b)
+    {
+        return a.result > b.result;
+    }
 
-    public:
-        Student();
-        Student(int id, string name, float quiz, float midterm1, float midterm2, float assignment, float final);
-        void PrintAll();
-        float calculateQuiz();
-        float calculateMidTerm();
-        float calculateMid2();
-        float calculateAssignment();
-        float calculateFinal();
-        float calculateTotalMark();
+    friend bool operator<(Student a, Student b)
+    {
+        return a.result < b.result;
+    }
+
+private:
+    int student_id;
+    string student_name;
+    double quiz, midterm1, midterm2, assignment, final, result;
+
+public:
+    Student() { }
+    Student(int id, string name, double quiz, double midterm1, double midterm2, double assignment, double final)
+    {
+        student_id = id;
+        student_name = name;
+        this->quiz = quiz;
+        this->midterm1 = midterm1;
+        this->midterm2 = midterm2;
+        this->assignment = assignment;
+        this->final = final;
+
+        calculateTotalMark();
+    }
+    void PrintAll()
+    {
+        cout << "Student ID: " << student_id<<" ";
+        cout << "Student Name: " << student_name<<' ';
+        cout << "Total Mark: " << result<<endl;
+    }
+
+    void calculateTotalMark()
+    {
+        result = quiz*.1 + midterm1*.2 + midterm2*.2 + assignment*.2 + final*.3;
+    }
 
 };
 
-
-Student::Student(){
-    student_id = 0;
-    student_name = "";
-    quiz = 0;
-    midterm1 = 0;
-    midterm2 = 0;
-    assignment = 0;
-    final = 0;
-}
-
-Student::Student(int id, string name, float quiz, float midterm1, float midterm2, float assignment, float final){
-    student_id = id;
-    student_name = name;
-    this->quiz = quiz;
-    this->midterm1 = midterm1;
-    this->midterm2 = midterm2;
-    this->assignment = assignment;
-    this->final = final;
-}
-
-float Student::calculateQuiz(){
-    this->quiz = (this->quiz*10)/100;
-}
-float Student::calculateMidTerm(){
-    this->midterm1 = (this->midterm1*20)/100;
-}
-float Student::calculateMid2(){
-    this->midterm2 = (this->midterm2*20)/100;
-}
-float Student::calculateAssignment(){
-    this->assignment = (this->assignment*30)/100;
-}
-float Student::calculateFinal(){
-    this->final = (this->final*30)/100;
-}
-
-
-float Student::calculateTotalMark(){
-    float result = this->quiz + this->midterm1+ this->midterm2 + this->assignment + this->final;
-    return result;
-}
-
-
-
-
-// void Student::PrintAll(){
-//     cout<<"Student ID: "<<student_id;
-//     cout<<"Student Name: "<<student_name;
-//     cout<<"Total Mark: "<<calculateHigestMark();
-// }
