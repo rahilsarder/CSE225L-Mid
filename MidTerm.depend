@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1648450983 source:d:\education\cse225l\midterm\queuetype.cpp
+	"queuetype.h"
+
+1648450966 d:\education\cse225l\midterm\queuetype.h
+
+1648450946 source:d:\education\cse225l\midterm\stacktype.cpp
+	"stacktype.h"
+	<iostream>
+
+1648450916 d:\education\cse225l\midterm\stacktype.h
+
+1648451107 source:d:\education\cse225l\midterm\sortedlist.cpp
+	"SortedList.h"
+
+1648450868 d:\education\cse225l\midterm\sortedlist.h
+
+1648451114 source:d:\education\cse225l\midterm\unsortedlist.cpp
+	"UnsortedList.h"
+
+1648450819 d:\education\cse225l\midterm\unsortedlist.h
+
